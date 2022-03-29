@@ -19,8 +19,7 @@
 #include <cstdint>
 #include <vector>
 
-#include "HID-Settings.h"
-#include "MultiReport/Mouse.h"
+#include "kaleidoscope/driver/hid/keyboardio/usb/MultiReport/Mouse.h"
 
 namespace kaleidoscope {
 namespace testing {
