@@ -236,10 +236,8 @@ size_t Keyboard_::press(uint8_t k) {
     uint8_t bit = 1 << (uint8_t(k) % 8);
     report_.keys[k / 8] |= bit;
     return 1;
-  }
-
-  // It's a modifier key
-  else if (k >= HID_KEYBOARD_FIRST_MODIFIER && k <= HID_KEYBOARD_LAST_MODIFIER) {
+  } else if (k >= HID_KEYBOARD_FIRST_MODIFIER && k <= HID_KEYBOARD_LAST_MODIFIER) {
+    // It's a modifier key
     // Convert key into bitfield (0 - 7)
     k = k - HID_KEYBOARD_FIRST_MODIFIER;
     report_.modifiers |= (1 << k);
@@ -256,10 +254,8 @@ size_t Keyboard_::release(uint8_t k) {
     uint8_t bit = 1 << (k % 8);
     report_.keys[k / 8] &= ~bit;
     return 1;
-  }
-
-  // It's a modifier key
-  else if (k >= HID_KEYBOARD_FIRST_MODIFIER && k <= HID_KEYBOARD_LAST_MODIFIER) {
+  } else if (k >= HID_KEYBOARD_FIRST_MODIFIER && k <= HID_KEYBOARD_LAST_MODIFIER) {
+    // It's a modifier key
     // Convert key into bitfield (0 - 7)
     k = k - HID_KEYBOARD_FIRST_MODIFIER;
     report_.modifiers &= ~(1 << k);
