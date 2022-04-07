@@ -20,6 +20,7 @@
 #include <vector>
 
 #include "kaleidoscope/driver/hid/keyboardio/usb/MultiReport/SystemControl.h"
+#include "kaleidoscope/driver/hid/keyboardio/usb/HID-Settings.h"
 
 namespace kaleidoscope {
 namespace testing {

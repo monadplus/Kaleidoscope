@@ -17,6 +17,7 @@
 #include "testing/VirtualDeviceTest.h"
 
 #include "kaleidoscope/driver/hid/keyboardio/usb/HIDReportObserver.h"
+#include "kaleidoscope/driver/hid/keyboardio/usb/HID-Settings.h"
 #include "testing/HIDState.h"
 
 #include <bitset>

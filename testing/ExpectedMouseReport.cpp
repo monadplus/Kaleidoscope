@@ -16,6 +16,8 @@
 
 #include "testing/ExpectedMouseReport.h"
 
+#include "kaleidoscope/driver/hid/keyboardio/usb/HID-Settings.h"
+
 namespace kaleidoscope {
 namespace testing {
 
