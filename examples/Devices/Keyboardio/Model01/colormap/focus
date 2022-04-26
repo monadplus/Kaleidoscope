@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -e
+
+DEVICE="${DEVICE:-/dev/ttyACM0}"
+
+stty -F "${DEVICE}" 9600 raw -echo
+
+exec 3<"${DEVICE}"
+echo "$@" >"${DEVICE}"
+
+while read -r line <&3; do
+    line="$(echo -n "${line}" | tr -d '\r')"
+    if [ "${line}" == "." ]; then
+        break
+    fi
+    echo "${line}"
+done
