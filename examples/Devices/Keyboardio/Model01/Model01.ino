@@ -255,8 +255,8 @@ void tapDanceAction(uint8_t tap_dance_index, KeyAddr key_addr, uint8_t tap_count
 
     case UNDERSCORE:
       return tapDanceActionKeys(tap_count, tap_dance_action,
-                                LSHIFT(Key_Minus),
-                                Key_Minus);
+                                Key_Minus,
+                                LSHIFT(Key_Minus));
 
     case COMMA:
       return tapDanceActionKeys(tap_count, tap_dance_action,
