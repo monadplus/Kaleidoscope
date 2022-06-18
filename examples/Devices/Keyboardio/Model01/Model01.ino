@@ -346,7 +346,7 @@ KEYMAPS(
    ,XXX ,MS_SR  ,MM(L)  ,MM(Dn) ,MM(R)  ,MS_SDN
    ,XXX ,XXX    ,MW(SW) ,XXX    ,MW(SE) ,XXX    ,MM(BtnL)
 
-   ,___ ,Key_Delete ,___ ,___
+   ,___ ,___ ,___ ,___
    ,___
 
    ,LGUI(Key_Z) ,Key_F10    ,Key_F2     ,Key_F4      ,Key_F6     ,Key_F8 ,XXX
@@ -365,7 +365,7 @@ KEYMAPS(
    ,XXX ,M(UNICODE_A_GRAVE) ,TD(UNICODE_E) ,M(UNICODE_I_ACUTE) ,TD(UNICODE_O) ,M(UNICODE_U_ACUTE)
    ,XXX ,XXX ,XXX ,XXX ,XXX ,XXX ,XXX
 
-   ,___ ,XXX ,___ ,XXX
+   ,___ ,Key_Backspace ,Key_Delete ,XXX
    ,OSL(_EMPTY)
 
    ,XXX ,XXX       ,XXX        ,XXX ,XXX ,XXX ,XXX
