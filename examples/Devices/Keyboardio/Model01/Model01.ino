@@ -43,21 +43,21 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
 // Tap Dance
 enum {
-  LPB,        // Left paren, bracket, braces
-  RPB,        // Right paren, bracket, braces
-  COLON,      // Colon, semicolon
-  MNP,        // Next track, previous track
-  VOLD,       // Volume down, up, mute
-  BACKSLASH,  // Backslash, pipe character
-  BACKTICK,   // Backtick, tilde
-  EQUALS,     // Equals and plus
-  UNDERSCORE, // Underscore, minus
-  COMMA,      // Comma, left bracket
-  PERIOD,     // Period, right bracket
-  SLASH,      // Slash, question mark
-  QUOTE,      // Slash, question mark
-  UNICODE_E,  // UNICODE_E_GRAVE, UNICODE_E_ACUTE
-  UNICODE_O,  // UNICODE_O_GRAVE, UNICODE_O_ACUTE
+  LPB,               // Left paren, bracket, braces
+  RPB,               // Right paren, bracket, braces
+  COLON,             // Colon, semicolon
+  BACKSLASH,         // Backslash, pipe character
+  BACKTICK,          // Backtick, tilde
+  EQUALS,            // Equals and plus
+  UNDERSCORE,        // Underscore, minus
+  COMMA,             // Comma, left bracket
+  PERIOD,            // Period, right bracket
+  SLASH,             // Slash, question mark
+  QUOTE,             // Slash, question mark
+  UNICODE_E,         // UNICODE_E_GRAVE, UNICODE_E_ACUTE
+  UNICODE_CAPITAL_E, // UNICODE_CAPITAL_E_GRAVE, UNICODE_CAPITAL_E_ACUTE
+  UNICODE_O,         // UNICODE_O_GRAVE, UNICODE_O_ACUTE
+  UNICODE_CAPITAL_O, // UNICODE_CAPITAL_O_GRAVE, UNICODE_CAPITAL_O_ACUTE
 };
 
 // Layers
@@ -84,12 +84,19 @@ enum {
   EMOJI_ONEGAI,
 
   UNICODE_A_GRAVE,
+  UNICODE_CAPITAL_A_GRAVE,
   UNICODE_E_GRAVE,
+  UNICODE_CAPITAL_E_GRAVE,
   UNICODE_O_GRAVE,
+  UNICODE_CAPITAL_O_GRAVE,
   UNICODE_I_ACUTE,
+  UNICODE_CAPITAL_I_ACUTE,
   UNICODE_U_ACUTE,
+  UNICODE_CAPITAL_U_ACUTE,
   UNICODE_E_ACUTE,
+  UNICODE_CAPITAL_E_ACUTE,
   UNICODE_O_ACUTE,
+  UNICODE_CAPITAL_O_ACUTE,
 
   F11,
 
@@ -170,23 +177,44 @@ const macro_t *macroAction(uint8_t macro_id, KeyEvent &event) {
     case UNICODE_A_GRAVE:
       unicode(0x00E0, event.state);
       break;
+    case UNICODE_CAPITAL_A_GRAVE:
+      unicode(0x00C0, event.state);
+      break;
     case UNICODE_E_GRAVE:
       unicode(0x00E8, event.state);
       break;
-    case UNICODE_O_GRAVE:
-      unicode(0x00F2, event.state);
+    case UNICODE_CAPITAL_E_GRAVE:
+      unicode(0x00C8, event.state);
       break;
     case UNICODE_E_ACUTE:
       unicode(0x00E9, event.state);
       break;
+    case UNICODE_CAPITAL_E_ACUTE:
+      unicode(0x00C9, event.state);
+      break;
+    case UNICODE_O_GRAVE:
+      unicode(0x00F2, event.state);
+      break;
+    case UNICODE_CAPITAL_O_GRAVE:
+      unicode(0x00D2, event.state);
+      break;
     case UNICODE_O_ACUTE:
       unicode(0x00F3, event.state);
+      break;
+    case UNICODE_CAPITAL_O_ACUTE:
+      unicode(0x00D3, event.state);
       break;
     case UNICODE_I_ACUTE:
       unicode(0x00ED, event.state);
       break;
+    case UNICODE_CAPITAL_I_ACUTE:
+      unicode(0x00CD, event.state);
+      break;
     case UNICODE_U_ACUTE:
       unicode(0x00FA, event.state);
+      break;
+    case UNICODE_CAPITAL_U_ACUTE:
+      unicode(0x00DA, event.state);
       break;
 
     case F11:
@@ -233,15 +261,6 @@ void tapDanceAction(uint8_t tap_dance_index, KeyAddr key_addr, uint8_t tap_count
       return tapDanceActionKeys(tap_count, tap_dance_action,
                                 LSHIFT(Key_Semicolon),
                                 Key_Semicolon);
-    case MNP:
-      return tapDanceActionKeys(tap_count, tap_dance_action,
-                                Consumer_ScanNextTrack,
-                                Consumer_ScanPreviousTrack);
-    case VOLD:
-      return tapDanceActionKeys(tap_count, tap_dance_action,
-                                Consumer_VolumeDecrement,
-                                Consumer_VolumeIncrement,
-                                Key_Mute);
 
     case BACKSLASH:
       return tapDanceActionKeys(tap_count, tap_dance_action,
@@ -264,14 +283,9 @@ void tapDanceAction(uint8_t tap_dance_index, KeyAddr key_addr, uint8_t tap_count
                                 LSHIFT(Key_Comma));
 
     case PERIOD:
-      // switch (tap_dance_action) {
-      //   case kaleidoscope::plugin::TapDance::ActionType::Hold:
-      //     return tapDanceActionKeys(tap_count, tap_dance_action, M(TRIPLE_PERIOD));
-      //   default:
-          return tapDanceActionKeys(tap_count, tap_dance_action,
-                                    Key_Period,
-                                    LSHIFT(Key_Period));
-      // }
+      return tapDanceActionKeys(tap_count, tap_dance_action,
+                                Key_Period,
+                                LSHIFT(Key_Period));
 
     case BACKTICK:
       return tapDanceActionKeys(tap_count, tap_dance_action,
@@ -292,6 +306,16 @@ void tapDanceAction(uint8_t tap_dance_index, KeyAddr key_addr, uint8_t tap_count
       return tapDanceActionKeys(tap_count, tap_dance_action,
                                 M(UNICODE_E_GRAVE),
                                 M(UNICODE_E_ACUTE));
+
+    case UNICODE_CAPITAL_E:
+      return tapDanceActionKeys(tap_count, tap_dance_action,
+                                M(UNICODE_CAPITAL_E_GRAVE),
+                                M(UNICODE_CAPITAL_E_ACUTE));
+
+    case UNICODE_CAPITAL_O:
+      return tapDanceActionKeys(tap_count, tap_dance_action,
+                                M(UNICODE_CAPITAL_O_GRAVE),
+                                M(UNICODE_CAPITAL_O_ACUTE));
 
     case UNICODE_O:
       return tapDanceActionKeys(tap_count, tap_dance_action,
@@ -325,7 +349,7 @@ KEYMAPS(
     M(F11)       ,Key_1 ,Key_2   ,Key_3     ,Key_4     ,Key_5  ,TD(BACKSLASH)
    ,TD(BACKTICK) ,Key_Q ,Key_W   ,Key_E     ,Key_R     ,Key_T  ,TD(LPB)
    ,Key_Tab      ,Key_A ,Key_S   ,Key_D     ,Key_F     ,Key_G
-   ,TD(MNP)      ,Key_Z ,Key_X   ,Key_C     ,Key_V     ,Key_B  ,TD(COLON)
+   ,___          ,Key_Z ,Key_X   ,Key_C     ,Key_V     ,Key_B  ,TD(COLON)
 
    ,OSM(LeftControl) ,Key_Backspace ,OSM(LeftShift) ,Key_Escape
    ,OSL(_NAV)
@@ -347,21 +371,21 @@ KEYMAPS(
    ,XXX ,XXX    ,MW(SW) ,XXX    ,MW(SE) ,XXX    ,MM(BtnL)
 
    ,___ ,___ ,___ ,___
-   ,___
+   ,Key_Mute
 
    ,LGUI(Key_Z) ,Key_F10    ,Key_F2     ,Key_F4      ,Key_F6     ,Key_F8 ,XXX
    ,XXX         ,Key_PageUp ,Key_Home   ,Key_UpArrow ,Key_End    ,XXX    ,OSL(_EMPTY)
                 ,Key_PageDn ,Key_LArrow ,Key_DnArrow ,Key_RArrow ,XXX    ,OSL(_EMPTY)
    ,MM(BtnR)    ,XXX        ,XXX        ,XXX         ,XXX        ,XXX    ,XXX
 
-   ,TD(VOLD) ,___ ,___ ,___
+   ,___ ,___ ,___ ,___
    ,OSL(_EMPTY)
   ),
 
   [_AUX] = KEYMAP_STACKED
   (
     XXX ,XXX ,XXX ,XXX ,XXX ,XXX ,XXX
-   ,XXX ,XXX ,XXX ,XXX ,XXX ,XXX ,XXX
+   ,XXX ,M(UNICODE_CAPITAL_A_GRAVE) ,TD(UNICODE_CAPITAL_E) ,M(UNICODE_CAPITAL_I_ACUTE) ,TD(UNICODE_CAPITAL_O) ,M(UNICODE_CAPITAL_U_ACUTE), XXX
    ,XXX ,M(UNICODE_A_GRAVE) ,TD(UNICODE_E) ,M(UNICODE_I_ACUTE) ,TD(UNICODE_O) ,M(UNICODE_U_ACUTE)
    ,XXX ,XXX ,XXX ,XXX ,XXX ,XXX ,XXX
 
