@@ -397,7 +397,7 @@ KEYMAPS(
         ,Key_0     ,Key_4      ,Key_5 ,Key_6 ,Key_Minus ,Key_Plus
    ,Key_Underscore ,Key_Period ,Key_7 ,Key_8 ,Key_9 ,XXX ,XXX
 
-   ,___ ,XXX ,XXX ,___
+   ,___ ,___ ,___ ,___
    ,___
   ),
 
