@@ -50,8 +50,6 @@ enum {
   BACKTICK,          // Backtick, tilde
   EQUALS,            // Equals and plus
   UNDERSCORE,        // Underscore, minus
-  COMMA,             // Comma, left bracket
-  PERIOD,            // Period, right bracket
   SLASH,             // Slash, question mark
   QUOTE,             // Slash, question mark
   UNICODE_E,         // UNICODE_E_GRAVE, UNICODE_E_ACUTE
@@ -277,16 +275,6 @@ void tapDanceAction(uint8_t tap_dance_index, KeyAddr key_addr, uint8_t tap_count
                                 Key_Minus,
                                 LSHIFT(Key_Minus));
 
-    case COMMA:
-      return tapDanceActionKeys(tap_count, tap_dance_action,
-                                Key_Comma,
-                                LSHIFT(Key_Comma));
-
-    case PERIOD:
-      return tapDanceActionKeys(tap_count, tap_dance_action,
-                                Key_Period,
-                                LSHIFT(Key_Period));
-
     case BACKTICK:
       return tapDanceActionKeys(tap_count, tap_dance_action,
                                 Key_Backtick,
@@ -357,7 +345,7 @@ KEYMAPS(
    ,TD(EQUALS)     ,Key_6     ,Key_7     ,Key_8      ,Key_9      ,Key_0     ,Key_PlayPause
    ,TD(RPB)        ,Key_Y     ,Key_U     ,Key_I      ,Key_O      ,Key_P     ,XXX
                    ,Key_H     ,Key_J     ,Key_K      ,Key_L      ,TD(QUOTE) ,OSL(_EMOJI)
-   ,TD(UNDERSCORE) ,Key_N     ,Key_M     ,TD(COMMA)  ,TD(PERIOD) ,TD(SLASH) ,Key_PrintScreen
+   ,TD(UNDERSCORE) ,Key_N     ,Key_M     ,Key_Comma  ,Key_Period ,TD(SLASH) ,Key_PrintScreen
 
    ,OSM(LeftGui) ,Key_Enter ,Key_Spacebar , OSM(LeftAlt)
    ,OSL(_AUX)
