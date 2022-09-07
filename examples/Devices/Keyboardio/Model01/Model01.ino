@@ -47,11 +47,8 @@ enum {
   RPB,               // Right paren, bracket, braces
   COLON,             // Colon, semicolon
   BACKSLASH,         // Backslash, pipe character
-  BACKTICK,          // Backtick, tilde
   EQUALS,            // Equals and plus
   UNDERSCORE,        // Underscore, minus
-  SLASH,             // Slash, question mark
-  QUOTE,             // Slash, question mark
   UNICODE_E,         // UNICODE_E_GRAVE, UNICODE_E_ACUTE
   UNICODE_CAPITAL_E, // UNICODE_CAPITAL_E_GRAVE, UNICODE_CAPITAL_E_ACUTE
   UNICODE_O,         // UNICODE_O_GRAVE, UNICODE_O_ACUTE
@@ -275,21 +272,6 @@ void tapDanceAction(uint8_t tap_dance_index, KeyAddr key_addr, uint8_t tap_count
                                 LSHIFT(Key_Minus),
                                 Key_Minus);
 
-    case BACKTICK:
-      return tapDanceActionKeys(tap_count, tap_dance_action,
-                                Key_Backtick,
-                                LSHIFT(Key_Backtick));
-
-    case SLASH:
-      return tapDanceActionKeys(tap_count, tap_dance_action,
-                                Key_Slash,
-                                LSHIFT(Key_Slash));
-
-    case QUOTE:
-      return tapDanceActionKeys(tap_count, tap_dance_action,
-                                Key_Quote,
-                                LSHIFT(Key_Quote));
-
     case UNICODE_E:
       return tapDanceActionKeys(tap_count, tap_dance_action,
                                 M(UNICODE_E_GRAVE),
@@ -335,7 +317,7 @@ KEYMAPS(
   [_PRIMARY] = KEYMAP_STACKED
   (
     M(F11)       ,Key_1 ,Key_2   ,Key_3     ,Key_4     ,Key_5  ,TD(BACKSLASH)
-   ,TD(BACKTICK) ,Key_Q ,Key_W   ,Key_E     ,Key_R     ,Key_T  ,TD(LPB)
+   ,Key_Backtick ,Key_Q ,Key_W   ,Key_E     ,Key_R     ,Key_T  ,TD(LPB)
    ,Key_Tab      ,Key_A ,Key_S   ,Key_D     ,Key_F     ,Key_G
    ,___          ,Key_Z ,Key_X   ,Key_C     ,Key_V     ,Key_B  ,TD(COLON)
 
@@ -344,8 +326,8 @@ KEYMAPS(
 
    ,TD(EQUALS)     ,Key_6     ,Key_7     ,Key_8      ,Key_9      ,Key_0     ,Key_PlayPause
    ,TD(RPB)        ,Key_Y     ,Key_U     ,Key_I      ,Key_O      ,Key_P     ,XXX
-                   ,Key_H     ,Key_J     ,Key_K      ,Key_L      ,TD(QUOTE) ,OSL(_EMOJI)
-   ,TD(UNDERSCORE) ,Key_N     ,Key_M     ,Key_Comma  ,Key_Period ,TD(SLASH) ,Key_PrintScreen
+                   ,Key_H     ,Key_J     ,Key_K      ,Key_L      ,Key_Quote ,OSL(_EMOJI)
+   ,TD(UNDERSCORE) ,Key_N     ,Key_M     ,Key_Comma  ,Key_Period ,Key_Slash ,Key_PrintScreen
 
    ,OSM(LeftGui) ,Key_Enter ,Key_Spacebar , OSM(LeftAlt)
    ,OSL(_AUX)
