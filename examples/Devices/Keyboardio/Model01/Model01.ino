@@ -45,10 +45,6 @@ KALEIDOSCOPE_INIT_PLUGINS(
 enum {
   LPB,               // Left paren, bracket, braces
   RPB,               // Right paren, bracket, braces
-  COLON,             // Colon, semicolon
-  BACKSLASH,         // Backslash, pipe character
-  EQUALS,            // Equals and plus
-  UNDERSCORE,        // Underscore, minus
   UNICODE_E,         // UNICODE_E_GRAVE, UNICODE_E_ACUTE
   UNICODE_CAPITAL_E, // UNICODE_CAPITAL_E_GRAVE, UNICODE_CAPITAL_E_ACUTE
   UNICODE_O,         // UNICODE_O_GRAVE, UNICODE_O_ACUTE
@@ -252,26 +248,6 @@ void tapDanceAction(uint8_t tap_dance_index, KeyAddr key_addr, uint8_t tap_count
                                     Key_KeypadRightParen, Key_RightBracket);
       }
 
-    case COLON:
-      return tapDanceActionKeys(tap_count, tap_dance_action,
-                                LSHIFT(Key_Semicolon),
-                                Key_Semicolon);
-
-    case BACKSLASH:
-      return tapDanceActionKeys(tap_count, tap_dance_action,
-                                LSHIFT(Key_Backslash),
-                                Key_Backslash);
-
-    case EQUALS:
-      return tapDanceActionKeys(tap_count, tap_dance_action,
-                                Key_Equals,
-                                LSHIFT(Key_Equals));
-
-    case UNDERSCORE:
-      return tapDanceActionKeys(tap_count, tap_dance_action,
-                                LSHIFT(Key_Minus),
-                                Key_Minus);
-
     case UNICODE_E:
       return tapDanceActionKeys(tap_count, tap_dance_action,
                                 M(UNICODE_E_GRAVE),
@@ -316,18 +292,18 @@ void hostPowerManagementEventHandler(kaleidoscope::plugin::HostPowerManagement::
 KEYMAPS(
   [_PRIMARY] = KEYMAP_STACKED
   (
-    M(F11)       ,Key_1 ,Key_2   ,Key_3     ,Key_4     ,Key_5  ,TD(BACKSLASH)
+    M(F11)       ,Key_1 ,Key_2   ,Key_3     ,Key_4     ,Key_5  ,Key_Backslash
    ,Key_Backtick ,Key_Q ,Key_W   ,Key_E     ,Key_R     ,Key_T  ,TD(LPB)
    ,Key_Tab      ,Key_A ,Key_S   ,Key_D     ,Key_F     ,Key_G
-   ,___          ,Key_Z ,Key_X   ,Key_C     ,Key_V     ,Key_B  ,TD(COLON)
+   ,___          ,Key_Z ,Key_X   ,Key_C     ,Key_V     ,Key_B  ,Key_Semicolon
 
    ,OSM(LeftControl) ,Key_Backspace ,OSM(LeftShift) ,Key_Escape
    ,OSL(_NAV)
 
-   ,TD(EQUALS)     ,Key_6     ,Key_7     ,Key_8      ,Key_9      ,Key_0     ,Key_PlayPause
+   ,Key_Equals     ,Key_6     ,Key_7     ,Key_8      ,Key_9      ,Key_0     ,Key_PlayPause
    ,TD(RPB)        ,Key_Y     ,Key_U     ,Key_I      ,Key_O      ,Key_P     ,XXX
                    ,Key_H     ,Key_J     ,Key_K      ,Key_L      ,Key_Quote ,OSL(_EMOJI)
-   ,TD(UNDERSCORE) ,Key_N     ,Key_M     ,Key_Comma  ,Key_Period ,Key_Slash ,Key_PrintScreen
+   ,Key_Minus      ,Key_N     ,Key_M     ,Key_Comma  ,Key_Period ,Key_Slash ,Key_PrintScreen
 
    ,OSM(LeftGui) ,Key_Enter ,Key_Spacebar , OSM(LeftAlt)
    ,OSL(_AUX)
@@ -362,10 +338,10 @@ KEYMAPS(
    ,___ ,Key_Backspace ,Key_Delete ,XXX
    ,OSL(_EMPTY)
 
-   ,XXX ,XXX       ,XXX        ,XXX ,XXX ,XXX ,XXX
-   ,XXX ,XXX       ,Key_1      ,Key_2 ,Key_3 ,XXX ,Key_Equals
-        ,Key_0     ,Key_4      ,Key_5 ,Key_6 ,Key_Minus ,Key_Plus
-   ,Key_Underscore ,Key_Period ,Key_7 ,Key_8 ,Key_9 ,XXX ,XXX
+   ,XXX            ,XXX        ,XXX   ,XXX   ,XXX   ,XXX       ,XXX
+   ,XXX            ,XXX        ,Key_1 ,Key_2 ,Key_3 ,XXX       ,Key_Equals
+                   ,Key_0      ,Key_4 ,Key_5 ,Key_6 ,Key_Minus ,Key_Plus
+   ,Key_Underscore ,Key_Period ,Key_7 ,Key_8 ,Key_9 ,XXX       ,XXX
 
    ,___ ,___ ,___ ,___
    ,___
