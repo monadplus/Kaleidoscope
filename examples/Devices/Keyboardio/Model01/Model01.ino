@@ -319,10 +319,10 @@ KEYMAPS(
    ,___ ,___ ,___ ,___
    ,Key_Mute
 
-   ,LGUI(Key_Z) ,Key_F10    ,Key_F2     ,Key_F4      ,Key_F6     ,Key_F8 ,XXX
-   ,XXX         ,Key_PageUp ,Key_Home   ,Key_UpArrow ,Key_End    ,XXX    ,OSL(_EMPTY)
-                ,Key_PageDn ,Key_LArrow ,Key_DnArrow ,Key_RArrow ,XXX    ,OSL(_EMPTY)
-   ,MM(BtnR)    ,XXX        ,XXX        ,XXX         ,XXX        ,XXX    ,XXX
+   ,LGUI(Key_Z) ,Key_F10    ,Key_F2     ,Key_F4      ,Key_F6     ,Key_F8     ,XXX
+   ,XXX         ,Key_PageUp ,Key_Home   ,XXX         ,Key_End    ,XXX        ,OSL(_EMPTY)
+                ,Key_PageDn ,Key_LArrow ,Key_DnArrow ,Key_UpArrow,Key_RArrow ,OSL(_EMPTY)
+   ,MM(BtnR)    ,XXX        ,XXX        ,XXX         ,XXX        ,XXX        ,XXX
 
    ,___ ,___ ,___ ,___
    ,OSL(_EMPTY)
