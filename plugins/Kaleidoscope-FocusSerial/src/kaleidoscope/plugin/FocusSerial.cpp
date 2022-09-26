@@ -19,7 +19,6 @@
 
 #include <Arduino.h>         // for PSTR, __FlashStringHelper, F, strcmp_P
 #include <HardwareSerial.h>  // for HardwareSerial
-#include <stdint.h>          // for uint8_t
 #include <string.h>          // for memset
 
 #include "kaleidoscope/Runtime.h"               // for Runtime, Runtime_
@@ -33,10 +32,8 @@
 namespace kaleidoscope {
 namespace plugin {
 
-char FocusSerial::command_[32];
-uint8_t FocusSerial::buf_cursor_ = 0;
-
 EventHandlerResult FocusSerial::afterEachCycle() {
+  int c;
   // GD32 doesn't currently autoflush the very last packet. So manually flush here
   Runtime.serialPort().flush();
   // If the serial buffer is empty, we don't have any work to do
@@ -45,33 +42,28 @@ EventHandlerResult FocusSerial::afterEachCycle() {
   }
 
   do {
-    command_[buf_cursor_++] = Runtime.serialPort().read();
-  } while (command_[buf_cursor_ - 1] != SEPARATOR && buf_cursor_ < sizeof(command_) && Runtime.serialPort().available() && (Runtime.serialPort().peek() != NEWLINE));
+    // If there's a newline pending, don't read it
+    if (Runtime.serialPort().peek() == NEWLINE) {
+      break;
+    }
+    c = Runtime.serialPort().read();
+    // Don't store the separator; just stash it
+    if (c == SEPARATOR) {
+      break;
+    }
+    command_[buf_cursor_++] = c;
+  } while (buf_cursor_ < (sizeof(command_) - 1) && Runtime.serialPort().available());
 
-
-  // If there was no command, there's nothing to do
-  if (command_[0] == '\0') {
-    buf_cursor_ = 0;
-    memset(command_, 0, sizeof(command_));
-    return EventHandlerResult::OK;
-  }
-
-  if ((command_[buf_cursor_ - 1] != SEPARATOR) && (Runtime.serialPort().peek() != NEWLINE) && buf_cursor_ < sizeof(command_)) {
+  if ((c != SEPARATOR) && (Runtime.serialPort().peek() != NEWLINE) && buf_cursor_ < (sizeof(command_) - 1)) {
     // We don't have enough command to work with yet.
     // Let's leave the buffer around for another cycle
     return EventHandlerResult::OK;
   }
 
-  // If this was a command with a space-delimited payload,
-  // strip the space delimiter off
-  if ((command_[buf_cursor_ - 1] == SEPARATOR)) {
-    command_[buf_cursor_ - 1] = '\0';
-  }
-
   // Then process the command
   Runtime.onFocusEvent(command_);
   while (Runtime.serialPort().available()) {
-    char c = Runtime.serialPort().read();
+    c = Runtime.serialPort().read();
     if (c == NEWLINE) {
       // newline serves as an end-of-command marker
       // don't drain the buffer past there
@@ -95,7 +87,7 @@ bool FocusSerial::handleHelp(const char *command,
 }
 
 EventHandlerResult FocusSerial::onFocusEvent(const char *command) {
-  if (handleHelp(command, PSTR("help\ndevice.reset\nplugins")))
+  if (handleHelp(command, PSTR("help\r\ndevice.reset\r\nplugins")))
     return EventHandlerResult::OK;
 
   if (strcmp_P(command, PSTR("device.reset")) == 0) {

@@ -1,5 +1,7 @@
 /* -*- mode: c++ -*-
- * Copyright (C) 2020  Eric Paniagua (epaniagua@google.com)
+ * Kaleidoscope-PrefixLayer -- Sends a prefix key for every key in a layer.
+ * Copyright (C) 2017, 2022  iliana etaoin <iliana@buttslol.net>
+ * Copyright (C) 2017  James Cash
  *
  * This program is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
@@ -14,12 +16,6 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-// No `#pragma once` since these undefs need to have every time a Kaleidoscope/
-// Arduino header is included before non-Kaleidoscope/Arduino header. The undefs
-// are needed, due to naming conflicts between Arduino and Googletest.
+#pragma once
 
-#undef min
-#undef max
-#undef T
-#undef U
-#undef TEST
+#include "kaleidoscope/plugin/PrefixLayer.h"  // IWYU pragma: export

@@ -82,7 +82,7 @@ Key EEPROMKeymap::getKeyExtended(uint8_t layer, KeyAddr key_addr) {
   return getKey(layer - progmem_layers_, key_addr);
 }
 
-uint16_t EEPROMKeymap::keymap_base(void) {
+uint16_t EEPROMKeymap::keymap_base() {
   return keymap_base_;
 }
 
@@ -102,7 +102,7 @@ void EEPROMKeymap::dumpKeymap(uint8_t layers, Key (*getkey)(uint8_t, KeyAddr)) {
 }
 
 EventHandlerResult EEPROMKeymap::onFocusEvent(const char *command) {
-  if (::Focus.handleHelp(command, PSTR("keymap.custom\nkeymap.default\nkeymap.onlyCustom")))
+  if (::Focus.handleHelp(command, PSTR("keymap.custom\r\nkeymap.default\r\nkeymap.onlyCustom")))
     return EventHandlerResult::OK;
 
   if (strncmp_P(command, PSTR("keymap."), 7) != 0)

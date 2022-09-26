@@ -41,13 +41,13 @@ uint8_t Heatmap::heat_colors_length = 4;
 // number of millisecond to wait between each heatmap computation
 uint16_t Heatmap::update_delay = 1000;
 
+uint16_t Heatmap::highest_ = 1;
+uint16_t Heatmap::heatmap_[];
+
 Heatmap::TransientLEDMode::TransientLEDMode(const Heatmap *parent)
-  :  // store the number of times each key has been strock
-    heatmap_{},
-    // max of heatmap_ (we divide by it so we start at 1)
-    highest_(1),
-    // last heatmap computation time
-    last_heatmap_comp_time_(Runtime.millisAtCycleStart()) {}
+  :  // last heatmap computation time
+    last_heatmap_comp_time_(Runtime.millisAtCycleStart()),
+    parent_(parent) {}
 
 cRGB Heatmap::TransientLEDMode::computeColor(float v) {
   // compute the color corresponding to a value between 0 and 1
@@ -107,21 +107,21 @@ cRGB Heatmap::TransientLEDMode::computeColor(float v) {
   return {b, g, r};
 }
 
-void Heatmap::TransientLEDMode::shiftStats(void) {
+void Heatmap::TransientLEDMode::shiftStats() {
   // this method is called when:
   // 1. a value in heatmap_ reach INT8_MAX
   // 2. highest_ reach heat_colors_length*512 (see Heatmap::loopHook)
 
   // we divide every heatmap element by 2
   for (auto key_addr : KeyAddr::all()) {
-    heatmap_[key_addr.toInt()] = heatmap_[key_addr.toInt()] >> 1;
+    parent_->heatmap_[key_addr.toInt()] = parent_->heatmap_[key_addr.toInt()] >> 1;
   }
 
   // and also divide highest_ accordingly
-  highest_ = highest_ >> 1;
+  parent_->highest_ = parent_->highest_ >> 1;
 }
 
-void Heatmap::resetMap(void) {
+void Heatmap::resetMap() {
 
   if (::LEDControl.get_mode_index() != led_mode_id_)
     return;
@@ -134,10 +134,10 @@ void Heatmap::TransientLEDMode::resetMap() {
   // this method can be used as a way to work around an existing bug with a single key
   // getting special attention or if the user just wants a button to reset the map
   for (auto key_addr : KeyAddr::all()) {
-    heatmap_[key_addr.toInt()] = 0;
+    parent_->heatmap_[key_addr.toInt()] = 0;
   }
 
-  highest_ = 1;
+  parent_->highest_ = 1;
 }
 
 // It may be better to use `onKeyswitchEvent()` here
@@ -167,17 +167,17 @@ EventHandlerResult Heatmap::onKeyEvent(KeyEvent &event) {
 
 EventHandlerResult Heatmap::TransientLEDMode::onKeyEvent(KeyEvent &event) {
   // increment the heatmap_ value related to the key
-  heatmap_[event.addr.toInt()]++;
+  parent_->heatmap_[event.addr.toInt()]++;
 
   // check highest_
-  if (highest_ < heatmap_[event.addr.toInt()]) {
-    highest_ = heatmap_[event.addr.toInt()];
+  if (parent_->highest_ < parent_->heatmap_[event.addr.toInt()]) {
+    parent_->highest_ = parent_->heatmap_[event.addr.toInt()];
 
     // if highest_ (and so heatmap_ value related to the key)
     // is close to overflow: call shiftStats
     // NOTE: this is barely impossible since shiftStats should be
     //       called much sooner by Heatmap::loopHook
-    if (highest_ == INT16_MAX)
+    if (parent_->highest_ == INT16_MAX)
       shiftStats();
   }
 
@@ -204,13 +204,13 @@ EventHandlerResult Heatmap::TransientLEDMode::beforeEachCycle() {
   // didn't lose any precision in our heatmap since between each color we have a
   // maximum precision of 256 ; said differently, there is 256 state (at max)
   // between heat_colors[x] and heat_colors[x+1].
-  if (highest_ > (static_cast<uint16_t>(heat_colors_length) << 9))
+  if (parent_->highest_ > (static_cast<uint16_t>(heat_colors_length) << 9))
     shiftStats();
 
   return EventHandlerResult::OK;
 }
 
-void Heatmap::TransientLEDMode::update(void) {
+void Heatmap::TransientLEDMode::update() {
   if (!Runtime.has_leds)
     return;
 
@@ -229,7 +229,7 @@ void Heatmap::TransientLEDMode::update(void) {
   for (auto key_addr : KeyAddr::all()) {
     // how much the key was pressed compared to the others (between 0 and 1)
     // (total_keys_ can't be equal to 0)
-    float v = static_cast<float>(heatmap_[key_addr.toInt()]) / highest_;
+    float v = static_cast<float>(parent_->heatmap_[key_addr.toInt()]) / parent_->highest_;
     // we could have used an interger instead of a float, but then we would
     // have had to change some multiplication in division.
     // / on uint is slower than * on float, so I stay with the float

@@ -181,12 +181,12 @@ mapping is shown below on the left side of a keyboard with a QWERTY layout:
       ---|---|---        W - Warp NW Sector   (Key_mouseWarpNW)
     A  S | D | F  G      E - Warp N Sector    (Key_mouseWarpN)
       ---|---|---        R - Warp NE Sector   (Key_mouseWarpNE)
-       X | C | V  B      S - Warp E Sector    (Key_mouseWarpE)
+       X | C | V  B      S - Warp W Sector    (Key_mouseWarpW)
                          D - Warp/Zoom Center (Key_mouseWarpIn)
-                         F - Warp W Sector    (Key_mouseWarpW)
-                         K - Warp SE Sector   (Key_mouseWarpSE)
+                         F - Warp E Sector    (Key_mouseWarpE)
+                         X - Warp SW Sector   (Key_mouseWarpSW)
                          C - Warp S Sector    (Key_mouseWarpS)
-                         V - Warp SW Sector   (Key_mouseWarpSW)
+                         V - Warp SE Sector   (Key_mouseWarpSE)
                          T - Right Click      (Key_mouseBtnR)
                          G - Left Click       (Key_mouseBtnL)
                          B - Middle Click     (Key_mouseBtnM)
@@ -244,3 +244,9 @@ properties available:
 
 > This method changes the size of the grid used for [warping](#warping). The
 > following are valid sizes: `MOUSE_WARP_GRID_2X2`, `MOUSE_WARP_GRID_3X3`
+
+## Further reading
+
+There is an [example][plugin:example] that demonstrates how to use this plugin.
+
+[plugin:example]: /examples/Features/MouseKeys/MouseKeys.ino

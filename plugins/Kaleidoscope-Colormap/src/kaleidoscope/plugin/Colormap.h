@@ -1,6 +1,6 @@
 /* -*- mode: c++ -*-
  * Kaleidoscope-Colormap -- Per-layer colormap effect
- * Copyright (C) 2016, 2017, 2018, 2021  Keyboard.io, Inc
+ * Copyright (C) 2016-2022  Keyboard.io, Inc
  *
  * This program is free software: you can redistribute it and/or modify it under it under
  * the terms of the GNU General Public License as published by the Free Software
@@ -32,13 +32,14 @@ class ColormapEffect : public Plugin,
                        public LEDModeInterface,
                        public AccessTransientLEDMode {
  public:
-  ColormapEffect(void) {}
-
   void max_layers(uint8_t max_);
 
   EventHandlerResult onLayerChange();
   EventHandlerResult onNameQuery();
   EventHandlerResult onFocusEvent(const char *command);
+
+  static bool isUninitialized();
+  static void updateColorIndexAtPosition(uint8_t layer, uint16_t position, uint8_t palette_index);
 
   // This class' instance has dynamic lifetime
   //
@@ -54,7 +55,7 @@ class ColormapEffect : public Plugin,
    protected:
     friend class ColormapEffect;
 
-    void onActivate(void) final;
+    void onActivate() final;
     void refreshAt(KeyAddr key_addr) final;
 
    private:

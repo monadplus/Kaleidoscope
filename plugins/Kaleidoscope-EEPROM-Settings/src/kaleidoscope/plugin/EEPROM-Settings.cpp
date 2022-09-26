@@ -30,11 +30,6 @@
 namespace kaleidoscope {
 namespace plugin {
 
-struct EEPROMSettings::settings EEPROMSettings::settings_;
-bool EEPROMSettings::is_valid_;
-bool EEPROMSettings::sealed_;
-uint16_t EEPROMSettings::next_start_ = sizeof(EEPROMSettings::settings);
-
 EventHandlerResult EEPROMSettings::onSetup() {
   Runtime.storage().get(0, settings_);
 
@@ -70,11 +65,11 @@ EventHandlerResult EEPROMSettings::beforeEachCycle() {
   return EventHandlerResult::OK;
 }
 
-bool EEPROMSettings::isValid(void) {
+bool EEPROMSettings::isValid() {
   return is_valid_;
 }
 
-uint16_t EEPROMSettings::crc(void) {
+uint16_t EEPROMSettings::crc() {
   if (sealed_)
     return settings_.crc;
   return 0;
@@ -105,7 +100,7 @@ void EEPROMSettings::ignoreHardcodedLayers(bool value) {
   update();
 }
 
-void EEPROMSettings::seal(void) {
+void EEPROMSettings::seal() {
   sealed_ = true;
 
   CRCCalculator.finalize();
@@ -146,15 +141,15 @@ uint16_t EEPROMSettings::requestSlice(uint16_t size) {
   return start;
 }
 
-void EEPROMSettings::invalidate(void) {
+void EEPROMSettings::invalidate() {
   is_valid_ = false;
 }
 
-uint16_t EEPROMSettings::used(void) {
+uint16_t EEPROMSettings::used() {
   return next_start_;
 }
 
-void EEPROMSettings::update(void) {
+void EEPROMSettings::update() {
   Runtime.storage().put(0, settings_);
   Runtime.storage().commit();
   is_valid_ = true;
@@ -169,7 +164,7 @@ EventHandlerResult FocusSettingsCommand::onFocusEvent(const char *command) {
     GET_CRC,
   } sub_command;
 
-  if (::Focus.handleHelp(command, PSTR("settings.defaultLayer\nsettings.valid?\nsettings.version\nsettings.crc")))
+  if (::Focus.handleHelp(command, PSTR("settings.defaultLayer\r\nsettings.valid?\r\nsettings.version\r\nsettings.crc")))
     return EventHandlerResult::OK;
 
   if (strncmp_P(command, PSTR("settings."), 9) != 0)
@@ -218,7 +213,7 @@ EventHandlerResult FocusEEPROMCommand::onFocusEvent(const char *command) {
     ERASE,
   } sub_command;
 
-  if (::Focus.handleHelp(command, PSTR("eeprom.contents\neeprom.free\neeprom.erase")))
+  if (::Focus.handleHelp(command, PSTR("eeprom.contents\r\neeprom.free\r\neeprom.erase")))
     return EventHandlerResult::OK;
 
   if (strcmp_P(command, PSTR("eeprom.contents")) == 0)

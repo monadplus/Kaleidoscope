@@ -33,8 +33,6 @@ namespace kaleidoscope {
 namespace plugin {
 class FocusSerial : public kaleidoscope::Plugin {
  public:
-  FocusSerial(void) {}
-
   static constexpr char COMMENT   = '#';
   static constexpr char SEPARATOR = ' ';
   static constexpr char NEWLINE   = '\n';
@@ -45,7 +43,7 @@ class FocusSerial : public kaleidoscope::Plugin {
   EventHandlerResult sendName(const __FlashStringHelper *name) {
     Runtime.serialPort().print(name);
     delayAfterPrint();
-    Runtime.serialPort().print(NEWLINE);
+    Runtime.serialPort().println();
     delayAfterPrint();
     return EventHandlerResult::OK;
   }
@@ -96,6 +94,9 @@ class FocusSerial : public kaleidoscope::Plugin {
     color.g = Runtime.serialPort().parseInt();
     color.b = Runtime.serialPort().parseInt();
   }
+  void read(char &c) {
+    Runtime.serialPort().readBytes(&c, 1);
+  }
   void read(uint8_t &u8) {
     u8 = Runtime.serialPort().parseInt();
   }
@@ -104,7 +105,9 @@ class FocusSerial : public kaleidoscope::Plugin {
   }
 
   bool isEOL() {
-    return Runtime.serialPort().peek() == NEWLINE;
+    int i = Runtime.serialPort().peek();
+
+    return (i == NEWLINE || i == -1);
   }
 
 
@@ -113,15 +116,15 @@ class FocusSerial : public kaleidoscope::Plugin {
   EventHandlerResult onFocusEvent(const char *command);
 
  private:
-  static char command_[32];
-  static uint8_t buf_cursor_;
-  static void printBool(bool b);
+  char command_[32];
+  uint8_t buf_cursor_ = 0;
+  void printBool(bool b);
 
   // This is a hacky workaround for the host seemingly dropping characters
   // when a client spams its serial port too quickly
   // Verified on GD32 and macOS 12.3 2022-03-29
   static constexpr uint8_t focus_delay_us_after_character_ = 100;
-  static void delayAfterPrint() { delayMicroseconds(focus_delay_us_after_character_); }
+  void delayAfterPrint() { delayMicroseconds(focus_delay_us_after_character_); }
 };
 
 }  // namespace plugin

@@ -19,10 +19,6 @@
 
 #ifdef ARDUINO_keyboardio_model_100
 
-#ifndef EEPROM_EMULATION_SIZE
-#define EEPROM_EMULATION_SIZE 4096
-#endif
-
 #include <Arduino.h>
 
 #define CRGB(r, g, b) \
@@ -51,7 +47,7 @@ namespace device {
 namespace keyboardio {
 
 struct Model100StorageProps : public kaleidoscope::driver::storage::GD32FlashProps {
-  static constexpr uint16_t length = EEPROM_EMULATION_SIZE;
+  static constexpr uint16_t length = 16384;
 };
 
 
@@ -145,7 +141,7 @@ struct Model100Props : public kaleidoscope::device::BaseProps {
   typedef Model100StorageProps StorageProps;
   typedef kaleidoscope::driver::storage::GD32Flash<StorageProps> Storage;
 
-  typedef kaleidoscope::driver::bootloader::gd32::Base BootLoader;
+  typedef kaleidoscope::driver::bootloader::gd32::Base Bootloader;
   static constexpr const char *short_name = "kbio100";
 
   typedef kaleidoscope::driver::mcu::GD32Props MCUProps;

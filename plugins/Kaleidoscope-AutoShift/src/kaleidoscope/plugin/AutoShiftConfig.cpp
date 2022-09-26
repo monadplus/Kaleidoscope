@@ -20,7 +20,7 @@
 #include <Arduino.h>                       // for PSTR, strcmp_P, strncmp_P
 #include <Kaleidoscope-EEPROM-Settings.h>  // for EEPROMSettings
 #include <Kaleidoscope-FocusSerial.h>      // for Focus, FocusSerial
-#include <stdint.h>                        // for uint16_t, uint8_t
+#include <stdint.h>                        // for uint8_t, uint16_t
 
 #include "kaleidoscope/Runtime.h"               // for Runtime, Runtime_
 #include "kaleidoscope/device/device.h"         // for VirtualProps::Storage, Base<>::Storage
@@ -32,20 +32,18 @@ namespace plugin {
 // =============================================================================
 // AutoShift configurator
 
-uint16_t AutoShiftConfig::settings_base_;
-
 EventHandlerResult AutoShiftConfig::onSetup() {
-  settings_base_ = ::EEPROMSettings.requestSlice(sizeof(AutoShift::settings_));
+  settings_base_ = ::EEPROMSettings.requestSlice(sizeof(AutoShift::Settings));
 
   if (Runtime.storage().isSliceUninitialized(
         settings_base_,
-        sizeof(AutoShift::settings_))) {
+        sizeof(AutoShift::Settings))) {
     // If our slice is uninitialized, set sensible defaults.
-    Runtime.storage().put(settings_base_, AutoShift::settings_);
+    Runtime.storage().put(settings_base_, ::AutoShift.settings_);
     Runtime.storage().commit();
   }
 
-  Runtime.storage().get(settings_base_, AutoShift::settings_);
+  Runtime.storage().get(settings_base_, ::AutoShift.settings_);
   return EventHandlerResult::OK;
 }
 
@@ -56,8 +54,8 @@ EventHandlerResult AutoShiftConfig::onFocusEvent(const char *command) {
     CATEGORIES,
   } subCommand;
 
-  if (::Focus.handleHelp(command, PSTR("autoshift.enabled\n"
-                                       "autoshift.timeout\n"
+  if (::Focus.handleHelp(command, PSTR("autoshift.enabled\r\n"
+                                       "autoshift.timeout\r\n"
                                        "autoshift.categories")))
     return EventHandlerResult::OK;
 
@@ -112,7 +110,7 @@ EventHandlerResult AutoShiftConfig::onFocusEvent(const char *command) {
     break;
   }
 
-  Runtime.storage().put(settings_base_, AutoShift::settings_);
+  Runtime.storage().put(settings_base_, ::AutoShift.settings_);
   Runtime.storage().commit();
   return EventHandlerResult::EVENT_CONSUMED;
 }
