@@ -411,7 +411,7 @@ void setup() {
   Kaleidoscope.setup();
 
   // Tap dance
-  TapDance.time_out = 200;
+  TapDance.setTimeout(200);
 
   // ActiveModcolor
   ActiveModColorEffect.setOneShotColor(CRGB(255, 255, 0));
