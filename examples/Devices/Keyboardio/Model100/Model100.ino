@@ -321,7 +321,7 @@ KEYMAPS(
 
    ,LGUI(Key_Z) ,Key_F10    ,Key_F2     ,Key_F4      ,Key_F6     ,Key_F8     ,XXX
    ,XXX         ,Key_PageUp ,Key_Home   ,XXX         ,Key_End    ,XXX        ,OSL(_EMPTY)
-                ,Key_PageDn ,Key_LArrow ,Key_DnArrow ,Key_UpArrow,Key_RArrow ,OSL(_EMPTY)
+                ,Key_PageDn ,Key_H      ,Key_J       ,Key_K      ,Key_L      ,OSL(_EMPTY)
    ,MM(BtnR)    ,XXX        ,XXX        ,XXX         ,XXX        ,XXX        ,XXX
 
    ,___ ,___ ,___ ,___
