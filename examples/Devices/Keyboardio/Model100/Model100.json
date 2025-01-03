@@ -1,0 +1,517 @@
+[
+  {
+    "backcolor": "#ffffff",
+    "name": "Keyboardio Model 01 and Model 100",
+    "author": "Arnau Abella <arnau.abella@monadplus.pro>",
+    "switchMount": "cherry",
+    "pcb": false,
+    "plate": true
+  },
+  [
+    {
+      "x": 3,
+      "c": "#a7d0db",
+      "t": "#000000\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad",
+      "a": 1
+    },
+    "3\n#\n\n\n\nF3",
+    {
+      "x": 10
+    },
+    "8\n*\n\n\n\nF8"
+  ],
+  [
+    {
+      "y": -0.875,
+      "x": 2,
+      "c": "#bfbad1",
+      "t": "#0d0d0b\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad"
+    },
+    "2\n@\n\n\n\nF2",
+    {
+      "x": 1,
+      "c": "#7adabd",
+      "t": "#000000\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad"
+    },
+    "4\n$\n\n\n\nF4",
+    {
+      "x": 8
+    },
+    "7\n&\n\n\n\nF7",
+    {
+      "x": 1,
+      "c": "#bfbad1",
+      "t": "#0d0d0b\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad"
+    },
+    "9\n(\n\n\n\nF9"
+  ],
+  [
+    {
+      "y": -0.875,
+      "x": 5,
+      "c": "#7adabd",
+      "t": "#000000\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad"
+    },
+    "5\n%\n\n\n\nF5",
+    {
+      "c": "#93c9b7",
+      "t": "#000000\n\n\n\n#0075ad",
+      "a": 5,
+      "h": 1.5
+    },
+    "\n|\n\n\n<i class='kb kb-Multimedia-Mute-1'></i>\n\n\\",
+    {
+      "x": 4,
+      "t": "#000000\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad",
+      "a": 1,
+      "h": 1.5
+    },
+    "\n+\n\n\n<i class='kb kb-Unicode-Lock-Closed-1'></i>\nF12\n=",
+    {
+      "c": "#7adabd"
+    },
+    "6\n^\n\n\n\nF6"
+  ],
+  [
+    {
+      "y": -0.875,
+      "c": "#ffb2d2",
+      "t": "#000000\n\n\n\n#0075ad",
+      "a": 5,
+      "f2": 1
+    },
+    "\nPROG\n\n\n\n\nF11",
+    {
+      "t": "#0d0d0b\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad",
+      "a": 1,
+      "f": 3
+    },
+    "1\n!\n\n\n\nF1",
+    {
+      "x": 14,
+      "f": 3
+    },
+    "0\n)\n\n\n\nF10",
+    {
+      "t": "#000000\n\n\n\n#0075ad",
+      "a": 7,
+      "f": 7
+    },
+    "<i class='kb kb-Multimedia-Play-Pause'></i>"
+  ],
+  [
+    {
+      "y": -0.375,
+      "x": 3,
+      "c": "#a7d0db",
+      "t": "#000000\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad",
+      "a": 3,
+      "f": 3
+    },
+    "E\n\n\n\n\nÍ",
+    {
+      "x": 10
+    },
+    "I\n\n\n\n\n2"
+  ],
+  [
+    {
+      "y": -0.875,
+      "x": 2,
+      "c": "#bfbad1",
+      "t": "#0d0d0b\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad"
+    },
+    "W\n\n\n\n\nÈ É",
+    {
+      "x": 1,
+      "c": "#7adabd",
+      "t": "#000000\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad"
+    },
+    "R\n\n\n\n\nÒ Ó",
+    {
+      "x": 8
+    },
+    "U\n\n\n\n\n1",
+    {
+      "x": 1,
+      "c": "#bfbad1",
+      "t": "#0d0d0b\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad"
+    },
+    "O\n\n\n\n\n3"
+  ],
+  [
+    {
+      "y": -0.875,
+      "x": 5,
+      "c": "#7adabd",
+      "t": "#000000\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad"
+    },
+    "T\n\n\n\n\nÚ",
+    {
+      "x": 6,
+      "t": "#000000\n\n\n\n#0075ad",
+      "a": 7
+    },
+    "Y"
+  ],
+  [
+    {
+      "y": -0.875,
+      "c": "#ffb2d2",
+      "t": "#0d0d0b\n\n\n\n#0075ad",
+      "a": 5
+    },
+    "\n~\n\n\n\n\n`",
+    {
+      "t": "#0d0d0b\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad",
+      "a": 3
+    },
+    "Q\n\n\n\n\nÀ Á",
+    {
+      "x": 14,
+      "t": "#0d0d0b\n\n\n\n#0075ad",
+      "a": 7
+    },
+    "P",
+    {
+      "t": "#0d0d0b\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad",
+      "a": 1
+    },
+    "<i class='kb kb-Multimedia-FastForward-End'></i>\n<i class='kb kb-Multimedia-Rewind-Start'></i>\n\n\n\n="
+  ],
+  [
+    {
+      "y": -0.625,
+      "x": 6,
+      "c": "#93c9b7",
+      "t": "#000000\n\n\n\n#0075ad",
+      "a": 5,
+      "h": 1.5
+    },
+    "(\n{\n\n\n<i class='kb kb-Multimedia-Volume-Up-2'></i>\n\n[",
+    {
+      "x": 4,
+      "t": "#000000\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad",
+      "a": 1,
+      "h": 1.5
+    },
+    ")\n}\n\n\nHome\n_\n]"
+  ],
+  [
+    {
+      "y": -0.75,
+      "x": 3,
+      "c": "#a7d0db",
+      "a": 3
+    },
+    "D\n\n\n\n\ní",
+    {
+      "x": 10
+    },
+    "K\n\n\n\n\n5\n\n\n\n\n\n<i class='kb kb-Arrows-Down'></i>"
+  ],
+  [
+    {
+      "y": -0.875,
+      "x": 2,
+      "c": "#bfbad1",
+      "t": "#0d0d0b\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad"
+    },
+    "S\n\n\n\n\nè é",
+    {
+      "x": 1,
+      "c": "#7adabd",
+      "t": "#000000\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad",
+      "n": true
+    },
+    "F\n\n\n\n\nò ó",
+    {
+      "x": 8,
+      "n": true
+    },
+    "J\n\n\n\n\n4\n\n\n\n\n\n<i class='kb kb-Arrows-Left'></i>",
+    {
+      "x": 1,
+      "c": "#bfbad1",
+      "t": "#0d0d0b\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad"
+    },
+    "L\n\n\n\n\n6\n\n\n\n\n\n<i class='kb kb-Arrows-Up'></i>"
+  ],
+  [
+    {
+      "y": -0.875,
+      "x": 5,
+      "c": "#7adabd",
+      "t": "#000000\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad"
+    },
+    "G\n\n\n\n\nú",
+    {
+      "x": 6
+    },
+    "H\n\n\n\nPgUp\n0"
+  ],
+  [
+    {
+      "y": -0.875,
+      "c": "#ffb2d2",
+      "t": "#0d0d0b\n\n\n\n#0075ad",
+      "a": 7,
+      "f": 6
+    },
+    "<i class='kb kb-Tab-1'></i>",
+    {
+      "t": "#0d0d0b\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad",
+      "a": 3,
+      "f": 3
+    },
+    "A\n\n\n\n\nà á",
+    {
+      "x": 14,
+      "a": 1
+    },
+    "\n\"\n\n\n\n-\n'\n\n\n\n\n<i class='kb kb-Arrows-Right'></i>",
+    {
+      "a": 3,
+      "f": 4
+    },
+    "ñ\n\n\n\n\n+"
+  ],
+  [
+    {
+      "y": -0.375,
+      "x": 3,
+      "c": "#a7d0db",
+      "t": "#000000\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad",
+      "f": 3
+    },
+    "C\n\n\n\n\nç",
+    {
+      "x": 10,
+      "a": 1,
+      "fa": [
+        6
+      ]
+    },
+    ",\n<\n\n\n\n8"
+  ],
+  [
+    {
+      "y": -0.875,
+      "x": 2,
+      "c": "#bfbad1",
+      "t": "#0d0d0b\n\n\n\n#0075ad",
+      "a": 7,
+      "f": 3
+    },
+    "X",
+    {
+      "x": 1,
+      "c": "#7adabd",
+      "t": "#000000\n\n\n\n#0075ad",
+      "f": 3
+    },
+    "V",
+    {
+      "x": 8,
+      "t": "#000000\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad",
+      "a": 3,
+      "f": 3
+    },
+    "m\n\n\n\n\n7",
+    {
+      "x": 1,
+      "c": "#bfbad1",
+      "t": "#0d0d0b\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad",
+      "a": 1,
+      "fa": [
+        7
+      ]
+    },
+    ".\n>\n\n\n\n9"
+  ],
+  [
+    {
+      "y": -0.875,
+      "x": 5,
+      "c": "#7adabd",
+      "t": "#000000\n\n\n\n#0075ad",
+      "a": 7,
+      "f": 3
+    },
+    "B",
+    {
+      "c": "#93c9b7",
+      "a": 5,
+      "f": 4
+    },
+    ";\n:\n\n\n<i class='kb kb-Multimedia-Volume-Down-1'></i>",
+    {
+      "x": 4,
+      "t": "#000000\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad",
+      "a": 1,
+      "fa": [
+        0,
+        5,
+        0,
+        0,
+        0,
+        0,
+        7
+      ]
+    },
+    "\n_\n\n\nEnd\n,\n-",
+    {
+      "c": "#7adabd",
+      "a": 3,
+      "f": 3
+    },
+    "n\n\n\n\nPgDn\n."
+  ],
+  [
+    {
+      "y": -0.875,
+      "c": "#ffb2d2",
+      "t": "#000000",
+      "a": 7
+    },
+    "",
+    {
+      "t": "#0d0d0b\n\n\n\n#b81b24"
+    },
+    "Z",
+    {
+      "x": 14,
+      "t": "#0d0d0b",
+      "a": 5,
+      "fa": [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "/\n?",
+    {
+      "t": "#000000",
+      "a": 7,
+      "f": 3
+    },
+    "<i class='kb kb-Scissors-2'></i>"
+  ],
+  [
+    {
+      "r": 15,
+      "rx": 6.5,
+      "ry": 4.25,
+      "y": 0.5,
+      "x": -2,
+      "c": "#f9cd31",
+      "t": "#000000\n\n\n\n#0075ad",
+      "f": 4
+    },
+    "Ctrl"
+  ],
+  [
+    {
+      "r": 20,
+      "y": -1,
+      "x": -0.75,
+      "f": 5
+    },
+    "<i class='kb kb-Unicode-BackSpace-DeleteLeft-Big'></ia>"
+  ],
+  [
+    {
+      "y": 0.75,
+      "x": -0.5,
+      "c": "#0075ad",
+      "t": "#ffffff",
+      "a": 5,
+      "w": 1.25,
+      "h": 1.25
+    },
+    "\nNAV"
+  ],
+  [
+    {
+      "r": 25,
+      "y": -2.75,
+      "x": 0.5,
+      "c": "#f9cd31",
+      "t": "#000000\n\n\n\n#0075ad\n#b81b24\n\n\n\n\n\n#0075ad",
+      "a": 3,
+      "f": 4
+    },
+    "Shift\n\n\n\n\n<i class='mss mss-Unicode-DeleteRight-Big-2'></i>"
+  ],
+  [
+    {
+      "r": 30,
+      "y": -1,
+      "x": 1.75,
+      "t": "#000000\n\n\n\n#0075ad",
+      "a": 7
+    },
+    "Esc\n\n\n\n<i class='kb kb-Unicode-Command-1'></i>"
+  ],
+  [
+    {
+      "r": -30,
+      "y": 1.3499999999999996,
+      "x": 1.25,
+      "t": "#000000",
+      "a": 5,
+      "f": 3,
+      "f2": 6
+    },
+    "Super\n<i class='kb kb-Unicode-Command-1'></i>"
+  ],
+  [
+    {
+      "r": -25,
+      "y": -1.25,
+      "x": 2.75,
+      "t": "#000000\n\n\n\n#0075ad",
+      "f": 6
+    },
+    "\n<i class='kb kb-Return-2'></i>"
+  ],
+  [
+    {
+      "r": -20,
+      "y": -1.3499999999999996,
+      "x": 4.25,
+      "a": 7,
+      "f": 3
+    },
+    "SPC"
+  ],
+  [
+    {
+      "y": 0.6500000000000004,
+      "x": 3.5,
+      "c": "#b81b24",
+      "t": "#ffffff",
+      "a": 5,
+      "f": 5,
+      "w": 1.25,
+      "h": 1.25
+    },
+    "\nAUX"
+  ],
+  [
+    {
+      "r": -15,
+      "y": -3.1500000000000004,
+      "x": 5.75,
+      "c": "#f9cd31",
+      "t": "#000000\n\n\n\n#0075ad",
+      "a": 7,
+      "f": 3
+    },
+    "Alt"
+  ]
+]
